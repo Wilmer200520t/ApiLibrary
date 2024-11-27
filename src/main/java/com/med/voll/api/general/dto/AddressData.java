@@ -1,9 +1,8 @@
 package com.med.voll.api.general.dto;
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 
-public record AdressData(
+public record AddressData(
         @NotNull String street,
         @NotNull String district,
         @NotNull String city,

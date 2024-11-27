@@ -1,6 +1,6 @@
 package com.med.voll.api.general.models;
 
-import com.med.voll.api.general.dto.AdressData;
+import com.med.voll.api.general.dto.AddressData;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +19,7 @@ public class Address {
     private int number;
     private String complement;
 
-    public Address(AdressData address) {
+    public Address(AddressData address) {
         this.street = address.street();
         this.city = address.city();
         this.district = address.district();
