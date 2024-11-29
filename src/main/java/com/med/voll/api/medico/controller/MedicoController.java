@@ -6,7 +6,6 @@ import com.med.voll.api.medico.dto.MedicMainData;
 import com.med.voll.api.medico.dto.MedicUpdate;
 import com.med.voll.api.medico.models.Medic;
 import com.med.voll.api.medico.repository.MedicRepository;
-import com.med.voll.api.medico.service.MedicService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,6 @@ public class MedicoController {
 
     @Autowired
     private MedicRepository medicRepository;
-    MedicService service = new MedicService();
     private List<Medic> medicos;
 
     @GetMapping
@@ -38,7 +36,7 @@ public class MedicoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MedicAllData> getById(@PathVariable int id) {
+    public ResponseEntity<MedicAllData> getById(@PathVariable Long id) {
         Optional<Medic> medic = medicRepository.findById(id);
 
         return medic.map(value -> ResponseEntity.ok(new MedicAllData(value))).orElseGet(() -> ResponseEntity.notFound().build());
@@ -56,7 +54,7 @@ public class MedicoController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> updateMedic(@Valid @RequestBody MedicUpdate body, @PathVariable int id) {
+    public ResponseEntity<?> updateMedic(@Valid @RequestBody MedicUpdate body, @PathVariable Long id) {
         Medic medic = medicRepository.findById(id).orElse(null);
 
         if (medic == null) {
@@ -74,7 +72,7 @@ public class MedicoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> deleteMedic(@PathVariable int id){
+    public ResponseEntity<?> deleteMedic(@PathVariable Long id){
         Medic medic = medicRepository.getReferenceById(id);
         medic.desactive();
 

@@ -21,6 +21,11 @@ public class Errors {
         return ResponseEntity.badRequest().body(errors);
     }
 
+    @ExceptionHandler({ValidationException.class})
+    public ResponseEntity<?> ValidationExceptionErr(ValidationException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
+
     private record DataError400(String field , String message){
         public DataError400(FieldError fieldError){
             this(fieldError.getField(), fieldError.getDefaultMessage());
