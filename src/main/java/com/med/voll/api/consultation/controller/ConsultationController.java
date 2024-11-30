@@ -4,6 +4,7 @@ import com.med.voll.api.consultation.dto.ConsultationDto;
 import com.med.voll.api.consultation.models.Consultation;
 import com.med.voll.api.consultation.repository.ConsultationRepository;
 import com.med.voll.api.consultation.service.ConsultationService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/consulta")
+@SecurityRequirement(name = "bearer-key")
 public class ConsultationController {
     @Autowired
     private ConsultationRepository consultationRepository;

@@ -2,6 +2,7 @@ package com.med.voll.api.patient.models;
 
 
 import com.med.voll.api.general.models.Gender;
+import com.med.voll.api.patient.dto.PatientData;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -29,4 +30,10 @@ public class Patient {
     private int age;
 
 
+    public Patient(PatientData patientData) {
+        this.name = patientData.name();
+        this.last_name = patientData.last_name();
+        this.gender = patientData.gender();
+        this.age = patientData.age();
+    }
 }

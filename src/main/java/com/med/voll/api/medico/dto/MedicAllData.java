@@ -1,7 +1,9 @@
 package com.med.voll.api.medico.dto;
 
+import com.med.voll.api.general.dto.AddressData;
 import com.med.voll.api.general.models.Address;
 import com.med.voll.api.medico.models.Medic;
+import com.med.voll.api.medico.models.Speciality;
 
 public record MedicAllData(
         String id,
@@ -24,4 +26,5 @@ public record MedicAllData(
                 medicData.getAddress()
         );
     }
+
 }

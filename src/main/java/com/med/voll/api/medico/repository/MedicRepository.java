@@ -14,6 +14,7 @@ import java.util.Optional;
 public interface MedicRepository extends JpaRepository<Medic, Long> {
     Page<Medic> findByActiveTrue(Pageable pageable);
 
+
     @Query("""
         select m from Medico m
         where \s
@@ -32,7 +33,7 @@ public interface MedicRepository extends JpaRepository<Medic, Long> {
 
     @Query("""
         select \s
-            CASE WHEN m.active = true THEN true ELSE false END
+            m.active
         from Medico m
         where m.id = :id
    \s""")

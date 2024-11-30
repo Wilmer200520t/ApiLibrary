@@ -6,6 +6,7 @@ import com.med.voll.api.medico.dto.MedicMainData;
 import com.med.voll.api.medico.dto.MedicUpdate;
 import com.med.voll.api.medico.models.Medic;
 import com.med.voll.api.medico.repository.MedicRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/medico")
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 
     @Autowired
