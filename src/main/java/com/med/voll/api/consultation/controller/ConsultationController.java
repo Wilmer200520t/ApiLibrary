@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,16 +25,18 @@ public class ConsultationController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> saveConsultation(@Validated @RequestBody ConsultationDto body){
+    public ResponseEntity<ConsultationDto> saveConsultation(@Validated @RequestBody ConsultationDto body){
         Consultation consultation = consultationService.book(body);
         ConsultationDto consultationDto = new ConsultationDto(consultation);
         return ResponseEntity.ok().body(consultationDto);
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllConsultation(){
+    public ResponseEntity<List<ConsultationDto>> getAllConsultation(){
         List<Consultation> listConsultation = consultationRepository.findAll();
         List<ConsultationDto> listConsultationDto = listConsultation.stream().map(ConsultationDto:: new).toList();
         return ResponseEntity.ok().body(listConsultationDto);
     }
+
+
 }

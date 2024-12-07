@@ -79,6 +79,7 @@ class MedicRepositoryTest {
         return patient;
     }
 
+
     private MedicData medicData(String name, String email, String document, Speciality speciality) {
         return new MedicData(
                 name,
